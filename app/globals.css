@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #f5f2ec;
+  --color-ink: #16181d;
+  --color-blue: #0c8ce9;
+  --color-orange: #e8571e;
+  --color-yellow: #ffd23f;
+  --color-muted: #4a4d55;
+  --font-display: var(--font-bowlby);
+  --font-body: var(--font-hanken);
+  --font-hand: var(--font-caveat);
+}
+
+@utility bg-dotgrid {
+  background-color: var(--color-cream);
+  background-image: radial-gradient(#d9d3c7 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
+  50% { transform: translateY(-8px) rotate(var(--tilt, 0deg)); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .float { animation: none; }
+}

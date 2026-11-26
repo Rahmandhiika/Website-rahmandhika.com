@@ -23,7 +23,7 @@ export function Nav() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Resume ↓
+            View CV ↗
           </a>
         </div>
       </nav>

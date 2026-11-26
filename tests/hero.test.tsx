@@ -6,11 +6,12 @@ import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
 
 describe("Nav", () => {
-  test("Resume opens the web CV in a new tab", () => {
+  test("View CV opens the web CV in a new tab", () => {
     render(<Nav />);
-    const resume = screen.getByRole("link", { name: /resume/i });
-    expect(resume).toHaveAttribute("href", "/Rahmandhika-CV.pdf");
-    expect(resume).toHaveAttribute("target", "_blank");
+    const cv = screen.getByRole("link", { name: /view cv/i });
+    expect(cv).toHaveAttribute("href", "/Rahmandhika-CV.pdf");
+    expect(cv).toHaveAttribute("target", "_blank");
+    expect(screen.queryByText(/resume/i)).toBeNull();
   });
 
   test("has section anchors", () => {
@@ -27,7 +28,9 @@ describe("Hero", () => {
     render(<Hero />);
     expect(screen.getByText("Design Engineer · UI/UX × Full-Stack")).toBeInTheDocument();
     expect(screen.getByText(/Open to freelance, part-time, and hybrid roles/)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /download cv/i })).toHaveAttribute("href", "/Rahmandhika-CV.pdf");
+    const dl = screen.getByRole("link", { name: /download cv/i });
+    expect(dl).toHaveAttribute("href", "/Rahmandhika-CV.pdf");
+    expect(dl).toHaveAttribute("download", "Rahmandhika-CV.pdf");
     expect(screen.getByRole("link", { name: /see my work/i })).toHaveAttribute("href", "#work");
   });
 });

@@ -18,10 +18,9 @@ export function Hero() {
             <a
               className="rounded-full border-2 border-ink bg-ink px-6 py-3 font-bold text-cream hover:bg-blue hover:border-blue"
               href={site.cvHref}
-              target="_blank"
-              rel="noopener noreferrer"
+              download="Rahmandhika-CV.pdf"
             >
-              Download CV
+              Download CV ↓
             </a>
             <a className="rounded-full border-2 border-ink bg-white px-6 py-3 font-bold hover:bg-yellow" href="#work">
               See my work →

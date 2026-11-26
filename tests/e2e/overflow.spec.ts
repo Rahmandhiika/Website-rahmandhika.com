@@ -34,6 +34,7 @@ test("reduced motion shows the whole name, still and on screen", async ({ browse
   await page.goto("/");
   const name = await page.locator(".marquee-track").evaluate((el) => getComputedStyle(el).animationName);
   expect(name).toBe("none");
+  await expect(page.locator(".marquee-track")).toBeHidden();
   const still = page.locator(".marquee-static");
   await expect(still).toBeVisible();
   await expect(still).toHaveText("RAHMANDHIKA");
@@ -41,6 +42,12 @@ test("reduced motion shows the whole name, still and on screen", async ({ browse
   expect(box!.x).toBeGreaterThanOrEqual(0);
   expect(box!.x + box!.width).toBeLessThanOrEqual(360);
   await ctx.close();
+});
+
+test("normal motion shows only the moving name", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".marquee-track")).toBeVisible();
+  await expect(page.locator(".marquee-static")).toBeHidden();
 });
 
 test("every image has alt text", async ({ page }) => {

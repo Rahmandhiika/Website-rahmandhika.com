@@ -44,6 +44,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
+  .marquee-track { animation: none; display: none; }
   .float { animation: none; }
 }
